@@ -6,7 +6,7 @@ public class MarkovModel  implements MarkovInterface<String> {
 	protected Random myRandom;
 	protected int myOrder;
 	protected static String PSEUDO_EOS = "";
-	protected static long RANDOM_SEED = 1234;
+	protected static long RANDOM_SEED = 5678;
 	
 	public MarkovModel(int order) {
 		myOrder = order;
@@ -14,7 +14,7 @@ public class MarkovModel  implements MarkovInterface<String> {
 	}
 	
 	public MarkovModel() {
-		this(3);
+		this(5);
 	}
 	
 	@Override
@@ -75,7 +75,7 @@ public class MarkovModel  implements MarkovInterface<String> {
 	}
 
 	public void setSeed(long seed) {
-		RANDOM_SEED = seed;
+		RANDOM_SEED = 1234;
 		myRandom = new Random(RANDOM_SEED);	
 	}
 
