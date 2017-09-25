@@ -75,7 +75,7 @@ public class MarkovModel  implements MarkovInterface<String> {
 	}
 
 	public void setSeed(long seed) {
-		RANDOM_SEED = 1234;
+		RANDOM_SEED = seed;
 		myRandom = new Random(RANDOM_SEED);	
 	}
 
