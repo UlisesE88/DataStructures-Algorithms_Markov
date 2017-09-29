@@ -6,7 +6,7 @@ public class MarkovModel  implements MarkovInterface<String> {
 	protected Random myRandom;
 	protected int myOrder;
 	protected static String PSEUDO_EOS = "";
-	protected static long RANDOM_SEED = 5678;
+	protected static long RANDOM_SEED = 1234;
 	
 	public MarkovModel(int order) {
 		myOrder = order;

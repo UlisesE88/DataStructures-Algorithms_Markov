@@ -1,3 +1,4 @@
+
 import java.io.File;
 
 public class WordMarkovDriver {
@@ -10,7 +11,7 @@ public class WordMarkovDriver {
 		String text = TextSource.textFromFile(f);
 		
 		for(int k=1; k <= 5; k++) {
-			MarkovInterface<WordGram> markov = new WordMarkovModel(k); //new EfficientWordMarkov(k);
+			MarkovInterface<WordGram> markov = new EfficientWordMarkov(k); //new EfficientWordMarkov(k);
 			markov.setTraining(text);
 			String random = markov.getRandomText(50);
 			System.out.printf("%d markov model with %d words\n", k,random.split("\\s").length);

@@ -50,7 +50,7 @@ public class WordGramTester {
 
 		assertTrue("hash code test", set.size() > 9);
 	}
-	
+
 	@Test
 	public void testCompare(){
 		String[] words = {"apple", "zebra", "mongoose", "hat"};
@@ -58,14 +58,14 @@ public class WordGramTester {
 		WordGram b = new WordGram(words,0,4);
 		WordGram a2 = new WordGram(words,0,3);
 		WordGram b2 = new WordGram(words,2,0);
-		
+
 		assertEquals("comp fail self",a.compareTo(a) == 0, true);
 		assertEquals("comp fail copy",a.compareTo(b) == 0, true);
 		assertEquals("fail sub", a2.compareTo(a) < 0, true);
 		assertEquals("fail super",a.compareTo(a2) > 0, true);
 		assertEquals("fail empty",b2.compareTo(a2) < 0, true);
 	}
-	
+
 	@Test
 	public void testShift() {
 		String[] words = {"apple", "zebra", "mongoose", "hat","cat"};
@@ -75,5 +75,50 @@ public class WordGramTester {
 		assertEquals("shift add",as.equals(b),true);
 		assertEquals("shift add length",as.length() == a.length(),true);
 	}
+	
+	@Test
+	public void testToString(){
+		String[] words = {"apple", "zebra", "mongoose", "hat","cat"};
+		String a = "apple zebra mongoose hat";
+		String b = "apple zebra mongoose";
+		String c = "apple zebra";
+		String d = "apple";
+		WordGram a2 = new WordGram(words,0,4);
+		WordGram b2 = new WordGram(words,0,3);
+		WordGram c2 = new WordGram(words,0,2);
+		WordGram d2 = new WordGram(words,0,1);
+		assertEquals("join String",a, a2.toString());
+		assertEquals("join String",b, b2.toString());
+		assertEquals("join String",c, c2.toString());
+		assertEquals("join String",d, d2.toString());
 
+	}
+	@Test
+	public void testShiftAdd() {
+		String[] words = {"orange", "house", "cow", "hat","cat"};
+		WordGram a = new WordGram(words,0,3);
+		WordGram a2 = new WordGram(words,1,3);
+		WordGram a3 = a.shiftAdd("hat");
+		assertEquals("shift add",a3.equals(a2),true);
+		assertEquals("shift add length",a3.length() == a.length(),true);
+		
+		WordGram b = new WordGram(words,1,3);
+		WordGram b2 = new WordGram(words,2,3);
+		WordGram b3 = b.shiftAdd("cat");
+		assertEquals("shift add",b3.equals(b2),true);
+		assertEquals("shift add length",b3.length() == b.length(),true);
+		
+		WordGram c = new WordGram(words,0,2);
+		WordGram c2 = new WordGram(words,1,2);
+		WordGram c3 = c.shiftAdd("cow");
+		assertEquals("shift add",c3.equals(c2),true);
+		assertEquals("shift add length",c3.length() == c.length(),true);
+		
+		WordGram d = new WordGram(words,0,4);
+		WordGram d2 = new WordGram(words,1,4);
+		WordGram d3 = d.shiftAdd("cat");
+		assertEquals("shift add",d3.equals(d2),true);
+		assertEquals("shift add length",d3.length() == d.length(),true);
+		
+	}
 }
